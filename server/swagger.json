@@ -1,0 +1,571 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": "Binar Academy Challenge Chapter 8 API Documentation",
+      "version": "1.0.0",
+      "title": "Binar Academy Challenge Chapter 8",
+      "termsOfService": "",
+      "contact": {
+        "email": "suryadharma2@gmail.com"
+      }
+    },
+    "host": "localhost:4000",
+    "basePath": "/api/v1",
+    "tags": [
+      {
+        "name": "API Documentation",
+        "description": "Binar Academy Challenge Chapter 8"
+      }
+    ],
+    "schemes": [
+      "http"
+    ],
+    "paths": {
+      "/players": {
+        "post": {
+          "tags": [
+            "API Documentation"
+          ],
+          "summary": "Add a new player",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "player",
+              "description": "The player to create.",
+              "schema": {
+                "type": "object",
+                "required": [
+                  "username",
+                  "email",
+                  "password"
+                ],
+                "properties": {
+                  "username": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "experience": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Created",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "description": "success"
+                  },
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "description": "The player ID."
+                      },
+                      "username": {
+                        "type": "string",
+                        "description": "The player username."
+                      },
+                      "email": {
+                        "type": "string",
+                        "description": "The player email."
+                      },
+                      "password": {
+                        "type": "string",
+                        "description": "The player password."
+                      },
+                      "experience": {
+                        "type": "integer",
+                        "description": "The player experience."
+                      },
+                      "lvl": {
+                        "type": "integer",
+                        "description": "The player level."
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "description": "failed"
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "username or email or password field cannot be empty"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal Server Error",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "description": "failed"
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "Some error occured while creating the Player"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "API Documentation"
+          ],
+          "summary": "List of players",
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "description": "success"
+                  },
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "description": "The player ID"
+                        },
+                        "username": {
+                          "type": "string",
+                          "description": "The player username"
+                        },
+                        "email": {
+                          "type": "string",
+                          "description": "The player email"
+                        },
+                        "password": {
+                          "type": "string",
+                          "description": "The player password"
+                        },
+                        "experience": {
+                          "type": "integer",
+                          "description": "The player experience"
+                        },
+                        "lvl": {
+                          "type": "integer",
+                          "description": "The player level"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal Server Error",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "description": "Some error occured while retrieving players"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/players/{id}": {
+        "get": {
+          "tags": [
+            "API Documentation"
+          ],
+          "summary": "Get player by id",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "type": "integer",
+              "required": true,
+              "description": "The player ID."
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "description": "success"
+                  },
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "description": "The player ID."
+                      },
+                      "username": {
+                        "type": "string",
+                        "description": "The player username."
+                      },
+                      "email": {
+                        "type": "string",
+                        "description": "The player email"
+                      },
+                      "password": {
+                        "type": "string",
+                        "description": "The player password"
+                      },
+                      "experience": {
+                        "type": "integer",
+                        "description": "The player experience"
+                      },
+                      "lvl": {
+                        "type": "integer",
+                        "description": "The player level"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "description": "failed"
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "Player with id=${id} not found"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal Server Error",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "description": "failed"
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "Error retrieving Player with id={id}."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "API Documentation"
+          ],
+          "summary": "Updated player",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "type": "integer",
+              "required": true,
+              "description": "The player ID."
+            },
+            {
+              "in": "body",
+              "name": "player",
+              "description": "The player to update.",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "experience": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "description": "success"
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "Player was updated successfully"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "description": "failed"
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "Cannot update Player with id={id}"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "description": "failed"
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "Player with id=${id} not found"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal Server Error",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "description": "failed"
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "Error updating Player with id={id}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "API Documentation"
+          ],
+          "summary": "Deleted player",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "type": "integer",
+              "required": true,
+              "description": "The player ID."
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "description": "success"
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "Player was deleted successfully!"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "description": "failed"
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "Cannot delete Player with id={id}"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal Server Error",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "description": "failed"
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "Could not delete Player with id={id}"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/players/exp/{id}": {
+        "post": {
+          "tags": [
+            "API Documentation"
+          ],
+          "summary": "Add experience to player",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "type": "integer",
+              "required": true,
+              "description": "The player ID."
+            },
+            {
+              "in": "body",
+              "name": "player",
+              "description": "The experience of player to create.",
+              "schema": {
+                "type": "object",
+                "required": [
+                  "experience"
+                ],
+                "properties": {
+                  "exp": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "description": "SUCCESS"
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "Player with id={id} has more experience"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "description": "FAILED"
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "exp field cannot be empty"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal Server Error",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "description": "FAILED"
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "Error updating Player exp with id={id}"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }

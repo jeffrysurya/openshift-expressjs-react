@@ -1,0 +1,25 @@
+npm install -D tailwindcss postcss autoprefixer
+
+when want to install from package should use npm install --save-dev
+npx tailwindcss init -p
+
+configure tailwindcss
+// module.exports = {
+//   content: [
+//     "./src/**/*.{js,jsx,ts,tsx}",
+//   ],
+//   theme: {
+//     extend: {},
+//   },
+//   plugins: [],
+// }
+
+add to index.css
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+document
+https://reactjs.org/docs/handling-events.html
+https://tailwindcss.com/docs/guides/create-react-app

@@ -10,4 +10,4 @@ RUN npm install
 
 COPY /server/. /home/app
 
-RUN npm run start
+CMD ["npm", "run", "start" ]

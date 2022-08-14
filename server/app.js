@@ -18,7 +18,7 @@ app.use(errorHandler)
  * entrypoint for all API routes
  */
 app.use("/api", apiRouter)
-app.use("/docs", swaggerUI.serve, swaggerUI.setup(swaggerJSON))
+app.use("/", swaggerUI.serve, swaggerUI.setup(swaggerJSON))
 
 app.listen(PORT, () => {
   console.log(`Listening on http://localhost:${PORT}`)

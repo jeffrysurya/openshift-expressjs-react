@@ -1,0 +1,8 @@
+FROM docker.io/postgres:alpine
+EXPOSE 3000 4000 5432
+
+ENV POSTGRES_USER jsdpostgres
+ENV POSTGRES_PASSWORD potus911
+ENV POSTGRES_DB binar-c8
+
+CMD ./scripts/start.sh
